@@ -307,6 +307,6 @@
                 <MediaElement HorizontalAlignment="Left" Height="221" Margin="246,172,0,0" VerticalAlignment="Top" Width="293"/>
             </Grid>
         </Border>
-
+        <Button></Button>
     </Grid>
 </Window>

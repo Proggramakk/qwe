@@ -129,5 +129,9 @@
   <ItemGroup>
     <Resource Include="Style\Icons\logotip.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Style\Icons\LightTheme\close.png" />
+    <Resource Include="Style\Icons\LightTheme\collapse.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

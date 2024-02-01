@@ -5,5 +5,14 @@
         <GradientStop Color="#27bde9" Offset="0.2"/>
         <GradientStop Color="#abdb54" Offset="0.8"/>
     </LinearGradientBrush>
-    
+
+    <LinearGradientBrush x:Key="MainBackgroundSlider" StartPoint="0.75,0" EndPoint="0,1">
+        <GradientStop Color="Red" Offset="0.1"/>
+        <GradientStop Color="Orange" Offset="0.2"/>
+        <GradientStop Color="Yellow" Offset="0.4"/>
+        <GradientStop Color="Green" Offset="0.6"/>
+        <GradientStop Color="LightBlue" Offset="0.8"/>
+        <GradientStop Color="Blue" Offset="1"/>
+        
+    </LinearGradientBrush>
 </ResourceDictionary>

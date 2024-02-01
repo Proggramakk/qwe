@@ -8,8 +8,10 @@
         Title="MainWindow" Height="600" Width="800"
         WindowStyle="None" AllowsTransparency="True"
         WindowStartupLocation="CenterScreen"
+        Icon="Style/Icons/logotip.png"
         Background="Transparent">
     <Window.Resources>
+        <!--#region Slider -->
         <Style x:Key="RepeatButtonTransparent" TargetType="{x:Type RepeatButton}">
             <Setter Property="OverridesDefaultStyle" Value="true"/>
             <Setter Property="Background" Value="Transparent"/>
@@ -36,7 +38,7 @@
         <SolidColorBrush x:Key="SliderThumb.Track.Border" Color="#FFD6D6D6"/>
         <ControlTemplate x:Key="SliderThumbHorizontalDefault" TargetType="{x:Type Thumb}">
             <Grid HorizontalAlignment="Center" UseLayoutRounding="True" VerticalAlignment="Center">
-                <Path x:Name="grip" SnapsToDevicePixels="True" Stretch="Fill" StrokeThickness="1" UseLayoutRounding="True" VerticalAlignment="Center">
+                <Path x:Name="grip" Fill="Aquamarine" SnapsToDevicePixels="True" Stretch="Fill" StrokeThickness="1" UseLayoutRounding="True" VerticalAlignment="Center">
                 </Path>
             </Grid>
             <ControlTemplate.Triggers>
@@ -56,7 +58,7 @@
         </ControlTemplate>
         <ControlTemplate x:Key="SliderThumbHorizontalTop" TargetType="{x:Type Thumb}">
             <Grid HorizontalAlignment="Center" UseLayoutRounding="True" VerticalAlignment="Center">
-                <Path x:Name="grip" Data="M 0,6 C0,6 5.5,0 5.5,0 5.5,0 11,6 11,6 11,6 11,18 11,18 11,18 0,18 0,18 0,18 0,6 0,6 z" Fill="{StaticResource SliderThumb.Static.Background}" Stroke="{StaticResource SliderThumb.Static.Border}" SnapsToDevicePixels="True" Stretch="Fill" StrokeThickness="1" UseLayoutRounding="True" VerticalAlignment="Center"/>
+                <Path x:Name="grip" Data="M 0,6 C0,6 5.5,0 5.5,0 5.5,0 11,6 11,6 11,6 11,18 11,18 11,18 0,18 0,18 0,18 0,6 0,6 z" Fill="Aquamarine" Stroke="{StaticResource SliderThumb.Static.Border}" SnapsToDevicePixels="True" Stretch="Fill" StrokeThickness="1" UseLayoutRounding="True" VerticalAlignment="Center"/>
             </Grid>
             <ControlTemplate.Triggers>
                 <Trigger Property="IsMouseOver" Value="true">
@@ -73,9 +75,15 @@
                 </Trigger>
             </ControlTemplate.Triggers>
         </ControlTemplate>
-        <ControlTemplate x:Key="SliderThumbHorizontalBottom" TargetType="{x:Type Thumb}">
+        <!-- Ползунок--><ControlTemplate x:Key="SliderThumbHorizontalBottom" TargetType="{x:Type Thumb}">
             <Grid HorizontalAlignment="Center" UseLayoutRounding="True" VerticalAlignment="Center">
-                <Path x:Name="grip" Data="M 0,12 C0,12 5.5,18 5.5,18 5.5,18 11,12 11,12 11,12 11,0 11,0 11,0 0,0 0,0 0,0 0,12 0,12 z" Fill="{StaticResource SliderThumb.Static.Background}" Stroke="{StaticResource SliderThumb.Static.Border}" SnapsToDevicePixels="True" Stretch="Fill" StrokeThickness="1" UseLayoutRounding="True" VerticalAlignment="Center"/>
+                <Path  x:Name="grip"  Fill="WhiteSmoke" Stroke="Transparent" SnapsToDevicePixels="True" Stretch="Fill" StrokeThickness="1" UseLayoutRounding="True" VerticalAlignment="Center">
+                    <Path.Data>
+                        <EllipseGeometry Center="10 10" RadiusX="10" RadiusY="10">
+                            
+                        </EllipseGeometry>
+                    </Path.Data>
+                </Path>
             </Grid>
             <ControlTemplate.Triggers>
                 <Trigger Property="IsMouseOver" Value="true">
@@ -92,7 +100,7 @@
                 </Trigger>
             </ControlTemplate.Triggers>
         </ControlTemplate>
-        <ControlTemplate x:Key="SliderHorizontal" TargetType="{x:Type Slider}">
+        <!--Слайдер--><ControlTemplate x:Key="SliderHorizontal" TargetType="{x:Type Slider}">
             <Border x:Name="border" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" SnapsToDevicePixels="True">
                 <Grid>
                     <Grid.RowDefinitions>
@@ -102,8 +110,8 @@
                     </Grid.RowDefinitions>
                     <TickBar x:Name="TopTick" Fill="{TemplateBinding Foreground}" Height="4" Margin="0,0,0,2" Placement="Top" Grid.Row="0" Visibility="Collapsed"/>
                     <TickBar x:Name="BottomTick" Fill="{TemplateBinding Foreground}" Height="4" Margin="0,2,0,0" Placement="Bottom" Grid.Row="2" Visibility="Collapsed"/>
-                    <Border x:Name="TrackBackground" Background="{StaticResource SliderThumb.Track.Background}" BorderBrush="{StaticResource SliderThumb.Track.Border}" BorderThickness="1" Height="4.0" Margin="5,0" Grid.Row="1" VerticalAlignment="center">
-                        <Canvas Margin="-6,-1">
+                    <Border x:Name="TrackBackground" Background="{StaticResource MainBackgroundSlider}" BorderBrush="Transparent" BorderThickness="0" Height="4.0" Margin="0,0,5,0" Grid.Row="1" CornerRadius="1" VerticalAlignment="Center">
+                        <Canvas Margin="-1" Background="Transparent">
                             <Rectangle x:Name="PART_SelectionRange" Fill="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" Height="4.0" Visibility="Hidden"/>
                         </Canvas>
                     </Border>
@@ -263,49 +271,82 @@
                 </Trigger>
             </Style.Triggers>
         </Style>
+        <!--#endregion-->
     </Window.Resources>
 
     <Grid>
         <Border Background="{StaticResource MainBackground}" CornerRadius="20 20 20 20">
             <Grid>
-                <StackPanel Orientation="Horizontal" Width="130" Height="30" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10 5 0 0">
-                    <Image Source="Style/Icons/logotip.png" Width="30" Height="30" VerticalAlignment="Center"/>
-                    <TextBlock Text="M U L T I M E D I A" FontSize="10" VerticalAlignment="Center" Margin="5 0 0 0"/>
-                </StackPanel>
+                <Grid Width="800" Height="50" VerticalAlignment="Top">
+                    <StackPanel  Width="800" Height="30"  HorizontalAlignment="Center">
+                        <Image Source="Style/Icons/logotip.png" Width="30" Height="30" VerticalAlignment="Center"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Width="110" Height="50" HorizontalAlignment="Right" Margin="0 0 20 0">
+                        <Button Width="50" Height="50" Style="{StaticResource ButtonStyles}" Name="CollapseBT">
+                            <Image Source="/Style/Icons/LightTheme/collapse.png" Width="30" Height="30"/>
+                        </Button>
+                        
+                        <Button Width="50" Height="50" Margin="10 0 0 0" Style="{StaticResource ButtonStyles}" Name="CloseBT">
+                            <Image Source="/Style/Icons/LightTheme/close.png" Width="30" Height="30"/>
+                        </Button>
+                    </StackPanel>
+                </Grid>
 
-                <StackPanel Orientation="Vertical" Width="50" Height="100" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0 40 0 0">
-                    <Button Width="50" Height="50" Style="{StaticResource ButtonStyles}">
-                        <Image Source="/Style/Icons/LightTheme/list_list.png" Width="30" Height="30"/>
-                    </Button>
 
-                    <Button Width="50" Height="50" Style="{StaticResource ButtonStyles}">
-                        <Image Source="Style/Icons/LightTheme/create_list.png" Width="30" Height="30"/>
-                    </Button>
-                </StackPanel>
-                <Grid Width="500" Height="50" HorizontalAlignment="Center" VerticalAlignment="Bottom">
+            <Grid Width="790" Height="110" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,490,0,0">
+                    <Grid.BitmapEffect>
+                        <DropShadowBitmapEffect Color="Black" Direction="430" Softness="1" ShadowDepth="10" Opacity="0.5" />
+                    </Grid.BitmapEffect>
                     <Slider Style="{DynamicResource MediaStyle}" x:Name="Slider"
                             Minimum="0"
                             Maximum="2"
                             TickPlacement="BottomRight"
-                            TickFrequency="1"
-                            Width="500"
+                            TickFrequency="1" Margin="5,10,0,68" Foreground="{x:Null}" 
                             />
-                    <Button Width="30" Height="30" Style="{StaticResource ButtonStyles}" HorizontalAlignment="Center" Margin="0 5 0 0">
-                        <Image Source="/Style/Icons/LightTheme/pause_playing.png"/>
-                    </Button>
-                    <Button Width="30" Height="30" Style="{StaticResource ButtonStyles}" HorizontalAlignment="Center" Margin="60 5 0 0">
-                        <Image Source="/Style/Icons/LightTheme/next_file.png" />
+                    <Grid>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Width="200" Height="50" VerticalAlignment="Center" Margin="0 0 0 0">
+                            <Button Width="50" Height="50" Style="{StaticResource ButtonStyles}" HorizontalAlignment="Center">
+                                <Image Source="/Style/Icons/LightTheme/previous_file.png"/>
+                            </Button>
+                            <Button Width="50" Height="50" Style="{StaticResource ButtonStyles}" HorizontalAlignment="Center">
+                                <Image Source="/Style/Icons/LightTheme/continue playing.png"/>
+                            </Button>
+                            <Button Width="50" Height="50" Style="{StaticResource ButtonStyles}" HorizontalAlignment="Center">
+                                <Image Source="/Style/Icons/LightTheme/pause_playing.png"/>
+                            </Button>
+                            <Button Width="50" Height="50" Style="{StaticResource ButtonStyles}" HorizontalAlignment="Center">
+                                <Image Source="/Style/Icons/LightTheme/next_file.png" />
 
-                    </Button>
-                    <Button Width="30" Height="30" Style="{StaticResource ButtonStyles}" HorizontalAlignment="Center" Margin="0 5 60 0">
-                        <Image Source="/Style/Icons/LightTheme/previous_file.png" />
-                    </Button>
-                    <Button Width="30" Height="30" Style="{StaticResource ButtonStyles}" HorizontalAlignment="Center" Margin="0 5 130 0">
-                        <Image Source="/Style/Icons/LightTheme/continue playing.png" />
+                            </Button>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Width="100" Height="50" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0 40 0 0">
+                            <Button Width="50" Height="50" Style="{StaticResource ButtonStyles}">
+                                <Image Source="/Style/Icons/LightTheme/create_list.png" Width="30" Height="30"/>
+                            </Button>
 
-                    </Button>
+                            <Button Width="50" Height="50" Style="{StaticResource ButtonStyles}">
+                                <Image Source="/Style/Icons/LightTheme/list_list.png" Width="30" Height="30"/>
+                            </Button>
+                        </StackPanel>
+                    </Grid>
                 </Grid>
-                <MediaElement HorizontalAlignment="Left" Height="221" Margin="246,172,0,0" VerticalAlignment="Top" Width="293"/>
+                <Grid Width="800" Height="550" Margin="0 0 0 0" VerticalAlignment="Bottom">
+                    <MediaElement/>
+                </Grid>
+                <Border Width="300" Height="400" HorizontalAlignment="Left" Margin="0 0 0 50" Visibility="Collapsed">
+                    <Border.Background>
+                        <LinearGradientBrush StartPoint="0.5,0.9" EndPoint="0.5,0">
+                            <GradientStop Color="#000066" Offset="0" />
+                            <GradientStop Color="#0066ff" Offset="1" />
+                        </LinearGradientBrush>
+                    </Border.Background>
+                    <Border.BitmapEffect>
+                        <DropShadowBitmapEffect Color="Black" Direction="450" Softness="1" ShadowDepth="10" Opacity="0.5" />
+                    </Border.BitmapEffect>
+                    <Grid>
+                        <Label Width="300" Height="400" HorizontalAlignment="Left" FontFamily="Arial" FontSize="8" Foreground="White"/>
+                    </Grid>
+                </Border>
             </Grid>
         </Border>
     </Grid>

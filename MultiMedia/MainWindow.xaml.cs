@@ -23,6 +23,18 @@ namespace MultiMedia
         public MainWindow()
         {
             InitializeComponent();
+            CloseBT.Click += CloseBT_Click;
+            CollapseBT.Click += CollapseBT_Click;
+        }
+
+        private void CollapseBT_Click(object sender, RoutedEventArgs e)
+        {
+            WindowState = WindowState.Minimized;
+        }
+
+        private void CloseBT_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }
